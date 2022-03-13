@@ -29,4 +29,13 @@ async def endpoint( resume: CV):
 @app.post("/mypostendpoint")
 async def mpep(emp:EMPLOYEE):
     return{"empname":emp.name}
-   
+
+@app.get("/mysecureendpoint")
+async def msep(token:str):
+    authtoken = "d2VkZGV2"
+    if token!="" or token==authtoken:
+        authorisation = "success welcome home"
+    else:
+        authorisation = "go back"
+    return{"serverpass":authorisation}
+       
