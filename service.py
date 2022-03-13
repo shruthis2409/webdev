@@ -9,6 +9,13 @@ class CV(BaseModel):
     age: int
     dev:bool
     hobby:Optional[list]
+        
+class EMPLOYEE(BaseModel):
+    name:str
+    exp:int
+    yop:int
+    age:int
+    employed:bool
 
 @app.get("/hello/{my_query}")
 def read_root(my_query,q:Optional[str]=None):
@@ -18,4 +25,8 @@ def read_root(my_query,q:Optional[str]=None):
 async def endpoint( resume: CV):
     "some code db here"
     return {"username": resume.name}
+
+@app.post("/mypostendpoint")
+async def mpep(emp:EMPLOYEE):
+    return{"empname":emp.name}
    
