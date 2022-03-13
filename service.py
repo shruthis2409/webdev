@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from typing import Optional
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -39,3 +40,15 @@ async def msep(token:str):
         authorisation = "go back"
     return{"serverpass":authorisation}
        
+@app.get("/webpage", response_class=HTMLResponse)
+async def webapp():
+    html_code =  """
+            <html>
+            <head>
+            </head>
+            <body>
+                <h1>hello guys</h1>
+            </body>
+            </html>
+    """
+    return html_code
