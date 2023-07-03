@@ -1,2 +1,2 @@
-# webdev
+# MyProject
 i am a student
